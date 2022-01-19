@@ -30,20 +30,20 @@ export default function Encrypt(props) {
     const result = filter(event.target.value).toUpperCase();
 
     if (input) {
-      input.value = result.toUpperCase();
+      input.value = result;
     }
 
     setKey(result);
   };
 
   const handleEncryptedMessage = (event) => {
-    const result = filter(event.target.value);
+    const result = filter(event.target.value).toUpperCase();
 
     if (textarea) {
-      textarea.value = result.toUpperCase();
+      textarea.value = result;
     }
 
-    setMessage(result.toUpperCase());
+    setMessage(result);
   };
 
   return (
