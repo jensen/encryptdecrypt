@@ -64,7 +64,9 @@ export default function Cipher(props: ICipherProps) {
           <Input ref={input} handleInput={handleKey} />
         </label>
         <label>
-          <div className="text-green-400 my-2">Secret Message</div>
+          <div className="text-green-400 my-2">
+            {isEncrypt ? "Secret Message" : "Encrypted Message"}
+          </div>
           <TextArea
             ref={textarea}
             value={message()}
