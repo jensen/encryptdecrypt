@@ -1,8 +1,15 @@
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lookup = alphabet.split("").reduce((hash, char, index) => {
-  hash[char] = index;
-  return hash;
-}, {});
+
+interface ILookupTable {
+  [key: string]: number;
+}
+
+const lookup: ILookupTable = alphabet
+  .split("")
+  .reduce((hash: ILookupTable, char: string, index) => {
+    hash[char] = index;
+    return hash;
+  }, {});
 
 export const generateCipher = () => {
   const cipher = [];
@@ -18,7 +25,7 @@ export const generateCipher = () => {
   return cipher;
 };
 
-export const generateKey = (length, keyword) => {
+export const generateKey = (length: number, keyword: string) => {
   let str = "";
 
   for (let i = 0; i < length; i++) {
@@ -28,8 +35,8 @@ export const generateKey = (length, keyword) => {
   return str;
 };
 
-export const encrypt = (keyword) => {
-  return (plaintext) => {
+export const encrypt = (keyword: string) => {
+  return (plaintext: string) => {
     const length = plaintext.length;
     const key = generateKey(length, keyword);
     const cipher = generateCipher();
@@ -47,8 +54,8 @@ export const encrypt = (keyword) => {
   };
 };
 
-export const decrypt = (keyword) => {
-  return (ciphertext) => {
+export const decrypt = (keyword: string) => {
+  return (ciphertext: string) => {
     const length = ciphertext.length;
     const key = generateKey(length, keyword);
     const cipher = generateCipher();

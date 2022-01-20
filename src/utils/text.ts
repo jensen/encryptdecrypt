@@ -1,4 +1,4 @@
-export const filter = (text) => {
+export const filter = (text: string | undefined | null) => {
   if (!text) return "";
 
   let result = "";

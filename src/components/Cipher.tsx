@@ -1,13 +1,12 @@
 import { useSearchParams, useLocation } from "solid-app-router";
+import type { JSX } from "solid-js";
 import { createEffect, createSignal, Show, onMount } from "solid-js";
 import { Link } from "solid-app-router";
 import { encrypt, decrypt } from "../utils/encryption";
 import { filter } from "../utils/text";
 import { Input, TextArea } from "./Inputs";
 
-interface ICipherProps {}
-
-export default function Cipher(props: ICipherProps) {
+export default function Cipher() {
   const { pathname } = useLocation();
   const [searchParams] = useSearchParams();
 
@@ -36,8 +35,12 @@ export default function Cipher(props: ICipherProps) {
 
   onMount(() => input?.focus());
 
-  const handleKey = (event) => {
-    const result = filter(event.target.value).toUpperCase();
+  const handleKey:
+    | JSX.EventHandlerUnion<HTMLInputElement, InputEvent>
+    | undefined = (event) => {
+    const result = filter(
+      (event?.target as unknown as EventTargetWithValue).value
+    ).toUpperCase();
 
     if (input) {
       input.value = result;
@@ -46,8 +49,12 @@ export default function Cipher(props: ICipherProps) {
     setKey(result);
   };
 
-  const handleSecretMessage = (event) => {
-    const result = filter(event.target.value).toLowerCase();
+  const handleSecretMessage:
+    | JSX.EventHandlerUnion<HTMLTextAreaElement, InputEvent>
+    | undefined = (event) => {
+    const result = filter(
+      (event?.target as unknown as EventTargetWithValue).value
+    ).toLowerCase();
 
     if (textarea) {
       textarea.value = result;

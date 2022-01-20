@@ -12,7 +12,7 @@ const Application: Component = () => {
             "text-green-400": location.pathname === "/encrypt",
             "text-green-900": location.pathname !== "/encrypt",
           }}
-          className="inline-block text-4xl font-bold"
+          className="inline-block text-4xl font-bold hover:text-green-400"
         >
           <Link href="/encrypt">Encrypt</Link>
         </h2>
@@ -22,7 +22,7 @@ const Application: Component = () => {
             "text-green-400": location.pathname === "/decrypt",
             "text-green-900": location.pathname !== "/decrypt",
           }}
-          className="inline-block text-4xl font-bold"
+          className="inline-block text-4xl font-bold hover:text-green-400"
         >
           <Link href="/decrypt">Decrypt</Link>
         </h2>
