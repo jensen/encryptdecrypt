@@ -26,6 +26,8 @@ export default function Encrypt(props) {
     }
   });
 
+  onMount(() => input?.focus());
+
   const handleKey = (event) => {
     const result = filter(event.target.value).toUpperCase();
 

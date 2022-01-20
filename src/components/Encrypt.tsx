@@ -1,4 +1,4 @@
-import { createEffect, createSignal, Show } from "solid-js";
+import { createEffect, createSignal, Show, onMount } from "solid-js";
 import { Link } from "solid-app-router";
 import { encrypt } from "../utils/encryption";
 import { filter } from "../utils/text";
@@ -23,6 +23,8 @@ export default function Encrypt(props) {
       setEncrypted("");
     }
   });
+
+  onMount(() => input?.focus());
 
   const handleKey = (event) => {
     const result = filter(event.target.value).toUpperCase();
